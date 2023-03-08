@@ -1,0 +1,70 @@
+<router-outlet></router-outlet>
+<div class="main-div">
+  <div class="container">
+    <h1 class="text-center">Contact Form</h1>
+
+    <form [formGroup]="contactForm" class="form-group py-2">
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field appearance="fill">
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="silverPhoneNumber">
+            <mat-error *ngIf="contactForm.controls['silverPhoneNumber'].hasError('required')">
+              *Phone Number is required!
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!-- <small *ngIf="contactForm.get('name').invalid && contactForm.get('name').touched">*Field required</small> -->
+        <div class="col-6">
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="silverEmail">
+            <mat-error *ngIf="contactForm.controls['silverEmail'].hasError('required')">
+              *Email is required!
+            </mat-error>
+            <mat-error *ngIf="contactForm.controls['silverEmail'].hasError('email')">
+              *E Mail formt is missing!
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-6">
+          <!-- <small *ngIf="contactForm.get('email').invalid && contactForm.get('email').touched">*Field required</small> -->
+          <mat-form-field appearance="fill">
+            <mat-label>Full Name</mat-label>
+            <input matInput formControlName="silverFullName">
+            <mat-error *ngIf="contactForm.controls['silverFullName'].hasError('required')">
+              *Full Name is required!
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-6">
+
+          <mat-form-field appearance="fill">
+            <mat-label>Topic</mat-label>
+            <input matInput formControlName="silverTopic">
+            <mat-error *ngIf="contactForm.controls['silverTopic'].hasError('required')">
+              *Topic is required!
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-12">
+          <mat-form-field appearance="fill">
+            <mat-label>Message</mat-label>
+            <textarea matInput formControlName="silverMessage"></textarea>
+            <mat-error *ngIf="contactForm.controls['silverMessage'].hasError('required')">*Name is
+              required!</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- <small *ngIf="contactForm.get('message').invalid && contactForm.get('message').touched">*Field required</small> -->
+      <div class="text-center">
+        <button type="reset" class="btn btn-primary w-100" mat-raised-button [disabled]="contactForm.invalid"
+          (click)="submitData()">Send</button>
+      </div>
+      <p *ngIf="isSubmit" class="submit-msg text-center mt-3">{{submitMessage}}</p>
+    </form>
+  </div>
+</div>
